@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARQL Query Interface</title>
+</head>
+<body>
+    <h1>SPARQL Query Application</h1>
+    <form method="POST">
+        <label for="query">Entrez votre requête SPARQL :</label><br>
+        <textarea id="query" name="query" rows="10" cols="50">{{ query or "" }}</textarea><br>
+        <button type="submit">Exécuter</button>
+    </form>
+
+    {% if results %}
+        <h2>Résultats :</h2>
+        {% if results.results.bindings %}
+            <ul>
+                {% for result in results.results.bindings %}
+                    <li>
+                        {% for key, value in result.items() %}
+                            <strong>{{ key }}:</strong> {{ value.value }}<br>
+                        {% endfor %}
+                    </li>
+                    <hr>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aucun résultat trouvé.</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>  
+
+
+
+
+
+
+
+
+
+
+
