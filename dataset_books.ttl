@@ -1,0 +1,59 @@
+@prefix ex: <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+# Classes
+ex:Book rdf:type rdfs:Class .
+ex:Author rdf:type rdfs:Class .
+ex:Publisher rdf:type rdfs:Class .
+
+# Propriétés
+ex:hasAuthor rdf:type rdf:Property ;
+             rdfs:domain ex:Book ;
+             rdfs:range ex:Author .
+
+ex:hasPublisher rdf:type rdf:Property ;
+                rdfs:domain ex:Book ;
+                rdfs:range ex:Publisher .
+
+ex:publishedYear rdf:type rdf:Property ;
+                 rdfs:domain ex:Book ;
+                 rdfs:range rdfs:Literal .
+
+ex:writtenBy rdf:type rdf:Property ;
+             rdfs:domain ex:Author ;
+             rdfs:range ex:Book .
+
+# Individus - Livres
+ex:Book1 rdf:type ex:Book ;
+         dcterms:title "Introduction to RDF" ;
+         ex:hasAuthor ex:Author1 ;
+         ex:hasPublisher ex:Publisher1 ;
+         ex:publishedYear "2020" .
+
+ex:Book2 rdf:type ex:Book ;
+         dcterms:title "SPARQL Queries Made Easy" ;
+         ex:hasAuthor ex:Author2 ;
+         ex:hasPublisher ex:Publisher2 ;
+         ex:publishedYear "2021" .
+
+ex:Book3 rdf:type ex:Book ;
+         dcterms:title "Understanding the Semantic Web" ;
+         ex:hasAuthor ex:Author1 ;
+         ex:hasPublisher ex:Publisher1 ;
+         ex:publishedYear "2019" .
+
+# Individus - Auteurs
+ex:Author1 rdf:type ex:Author ;
+           rdfs:label "John Doe" .
+
+ex:Author2 rdf:type ex:Author ;
+           rdfs:label "Jane Smith" .
+
+# Individus - Éditeurs
+ex:Publisher1 rdf:type ex:Publisher ;
+              rdfs:label "Tech Books Publishing" .
+
+ex:Publisher2 rdf:type ex:Publisher ;
+              rdfs:label "Semantic Web Press" .
